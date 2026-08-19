@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Hey Abby Love... Will you go out with me? ❤️ A romantic interactive date invitation just for you.">
+    <title>For Abby Love ❤️</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Background Canvas for Hearts and Sparkles -->
+    <canvas id="canvas-decorations"></canvas>
+
+    <!-- Background music toggle button -->
+    <button id="btn-sound" class="btn-sound-toggle" aria-label="Toggle background music" title="Toggle Music">
+        <span class="sound-icon">🔈</span>
+    </button>
+
+    <!-- Main Container -->
+    <main class="app-container">
+        
+        <!-- Screen 1: Invitation -->
+        <section id="screen-invitation" class="screen-card active">
+            <header class="card-header">
+                <span class="badge">Made pecially for Abby ❤️</span>
+            </header>
+            
+            <div class="heart-pulse-container">
+                <div class="heart-pulse-icon">❤️</div>
+            </div>
+            
+            <h1 class="title">Hey Abby Love… ❤️</h1>
+            <h2 class="subtitle">Will you go out with me?</h2>
+            
+            <p class="description">
+                I have a little date planned… but I need your answer first. 🥰
+            </p>
+            
+            <div class="btn-group-row">
+                <button id="btn-yes" class="btn-primary" aria-label="Accept invitation">
+                    YES ❤️
+                </button>
+                <button id="btn-no" class="btn-secondary" aria-label="Decline invitation">
+                    NO
+                </button>
+            </div>
+            
+            <p id="playful-hint" class="playful-hint-text hidden"></p>
+            
+            <footer class="card-footer">
+                From someone who really wants to take you out. 🥰
+            </footer>
+        </section>
+
+        <!-- Screen 2: Date Selector -->
+        <section id="screen-date-select" class="screen-card">
+            <div class="back-accent">❤️</div>
+            <h1 class="title">Okay… let's make this official. ❤️</h1>
+            <h2 class="subtitle">What kind of date should we go on?</h2>
+            
+            <div class="date-grid">
+                <!-- Card 1: Amala Date -->
+                <button class="date-choice-card" data-date-type="Amala Date" aria-label="Select Amala Date: Good food, good conversation, and you.">
+                    <span class="choice-icon">🍛</span>
+                    <span class="choice-title">Amala Date</span>
+                    <span class="choice-desc">“Good food, good conversation, and you. ❤️”</span>
+                    <span class="choice-cta">Choose this date</span>
+                    <span class="choice-checkmark">✓</span>
+                </button>
+
+                <!-- Card 2: Shopping Date -->
+                <button class="date-choice-card" data-date-type="Shopping Date" aria-label="Select Shopping Date: Let's go shopping and pretend we're not spending too much.">
+                    <span class="choice-icon">🛍️</span>
+                    <span class="choice-title">Shopping Date</span>
+                    <span class="choice-desc">“Let's go shopping and pretend we're not spending too much. 😂❤️”</span>
+                    <span class="choice-cta">Choose this date</span>
+                    <span class="choice-checkmark">✓</span>
+                </button>
+
+                <!-- Card 3: Park Date -->
+                <button class="date-choice-card" data-date-type="Park Date" aria-label="Select Park Date: A peaceful walk, fresh air, and quality time together.">
+                    <span class="choice-icon">🌳</span>
+                    <span class="choice-title">Park Date</span>
+                    <span class="choice-desc">“A peaceful walk, fresh air, and quality time together.”</span>
+                    <span class="choice-cta">Choose this date</span>
+                    <span class="choice-checkmark">✓</span>
+                </button>
+
+                <!-- Card 4: Beach Date -->
+                <button class="date-choice-card" data-date-type="Beach Date" aria-label="Select Beach Date: Sun, waves, laughter, and us.">
+                    <span class="choice-icon">🏖️</span>
+                    <span class="choice-title">Beach Date</span>
+                    <span class="choice-desc">“Sun, waves, laughter, and us.”</span>
+                    <span class="choice-cta">Choose this date</span>
+                    <span class="choice-checkmark">✓</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Screen 3: Date & Time Picker -->
+        <section id="screen-datetime-select" class="screen-card">
+            <h1 class="title">Perfect choice! ❤️</h1>
+            
+            <div id="selected-badge-container" class="selected-badge">
+                <span id="selected-badge-icon">🏖️</span> <span id="selected-badge-text">Beach Date</span>
+            </div>
+            
+            <h2 class="subtitle">Now, when should we make it happen?</h2>
+            
+            <form id="datetime-form" class="datetime-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="date-picker" class="form-label">Choose a date</label>
+                    <input type="date" id="date-picker" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time-picker" class="form-label">Choose a time</label>
+                    <input type="time" id="time-picker" class="form-input" required>
+                </div>
+                
+                <button type="submit" id="btn-confirm-datetime" class="btn-primary">
+                    Confirm Our Date ❤️
+                </button>
+            </form>
+        </section>
+
+        <!-- Screen 4: Confirmation -->
+        <section id="screen-confirmation" class="screen-card">
+            <div class="heartbeat-pulse-large">❤️</div>
+            
+            <h1 class="title">It's a date! ❤️</h1>
+            <p class="summary-subtitle">I can't wait to spend time with you, Abby Love.</p>
+            
+            <div class="summary-card">
+                <h3 class="summary-card-title">Our Date Details</h3>
+                <div class="summary-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Plan:</span>
+                        <span id="summary-plan" class="detail-value">Beach Date 🏖️</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Date:</span>
+                        <span id="summary-date" class="detail-value">Friday, August 21</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time:</span>
+                        <span id="summary-time" class="detail-value">6:00 PM</span>
+                    </div>
+                </div>
+                
+                <p class="final-love-note">This date is officially booked in my heart. ❤️</p>
+            </div>
+            
+            <h2 class="final-words">“See you then, love you. ❤️”</h2>
+            <p class="final-author">From your favorite person 🥰</p>
+            
+            <div class="beating-heart-decor">💖</div>
+        </section>
+
+    </main>
+
+    <!-- Script file -->
+    <script src="app.js"></script>
+</body>
+</html>
