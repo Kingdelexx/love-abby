@@ -80,6 +80,25 @@ html, body {
     transform: scale(0.95);
 }
 
+.btn-sound-toggle.sound-active {
+    background: rgba(204, 251, 241, 0.85); /* light-teal with transparency */
+    border-color: var(--primary-teal);
+    box-shadow: 0 4px 20px rgba(15, 118, 110, 0.15);
+    animation: soundWaves 2.5s infinite ease-in-out;
+}
+
+@keyframes soundWaves {
+    0% {
+        box-shadow: 0 4px 20px rgba(15, 118, 110, 0.15), 0 0 0 0px rgba(15, 118, 110, 0.2);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(15, 118, 110, 0.15), 0 0 0 8px rgba(15, 118, 110, 0);
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(15, 118, 110, 0.15), 0 0 0 0px rgba(15, 118, 110, 0);
+    }
+}
+
 /* Main Container Area */
 .app-container {
     position: relative;

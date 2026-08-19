@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedDateType: '',
         selectedDate: '',
         selectedTime: '',
-        audioEnabled: false,
+        audioEnabled: true,
         soundContext: null,
         melodyInterval: null
     };
@@ -328,8 +328,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize sound on absolute first user click somewhere on the viewport
     document.body.addEventListener('click', () => {
-        if (state.soundContext && state.soundContext.state === 'suspended') {
-            state.soundContext.resume();
+        if (state.audioEnabled) {
+            initSound();
+            startBackgroundMelody();
+        } else {
+            if (state.soundContext && state.soundContext.state === 'suspended') {
+                state.soundContext.resume();
+            }
         }
     }, { once: true });
 
